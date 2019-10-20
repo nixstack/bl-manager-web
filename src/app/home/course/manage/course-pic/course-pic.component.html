@@ -1,0 +1,7 @@
+<mat-card>
+  <mat-card-title>文件上传</mat-card-title>
+  <mat-card-content>
+    <app-file-upload action="/api/filesystem/upload" [files]="files" (onUpload)="onUpload($event)" (remove)="onRemove($event)" (onAfterUpload)="onAfterUpload($event)"></app-file-upload>
+    <!-- <app-file-upload action="http://localhost:30101/api/filesystem/upload" [files]="files" [multiple]="true" (onUpload)="onUpload($event)"></app-file-upload> -->
+  </mat-card-content>
+</mat-card>

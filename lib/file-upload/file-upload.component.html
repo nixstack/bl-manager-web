@@ -1,0 +1,32 @@
+<div
+  fxLayout="row wrap"
+  fxLayout.lt-sm="column"
+  fxLayoutGap="20px grid"
+  fxLayoutAlign="space-between center"
+>
+  <div>
+    <div class="app-upload-container">
+      <div class="app-upload-select">
+        <mat-icon class="app-upload-icon">add</mat-icon>
+        <div class="app-upload-text">上传文件</div>
+        <div class="app-upload-inner">
+          <input
+            type="file"
+            class="app-upload-input"
+            (change)="onInputChange($event)"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <ng-container *ngFor="let xb of tempData"></ng-container> -->
+  <!-- <ng-template ngFor let-xb [ngForOf]="tempData"></ng-template> -->
+  <!-- <ng-template ngFor let-item [ngForOf]="files"></ng-template> -->
+
+
+  <ng-template ngFor let-item [ngForOf]="files">
+    <app-file-preview [file]="item"  (moveUp)="onMoveUp($event)" (moveDown)="onMoveDown($event)" (remove)="onRemove($event)"></app-file-preview>
+  </ng-template>
+
+</div>

@@ -1,0 +1,12 @@
+<div class="container">
+    <h3 mat-dialog-title>确认删除?</h3>
+    <div mat-dialog-content>
+      {{data.pageName}}
+    </div>
+  
+    <div mat-dialog-actions>
+        <button mat-raised-button color="warn" [type]="submit" [mat-dialog-close]="1" (click)="onDelete()">删除</button>
+        <button mat-raised-button color="accent" (click)="onNoClick()" tabindex="-1">取消</button>
+      </div>
+  </div>
+  

@@ -1,0 +1,14 @@
+@import './variables/palette';
+
+@mixin app-theme-color() {
+  @each $name, $color in $app-theme-colors {
+    .app-background-#{$name} {
+      color: mat-color($color, default-contrast) !important;
+      background-color: mat-color($color, default) !important;
+    }
+
+    .app-#{$name} {
+      background-color: mat-color($color, default) !important;
+    }
+  }
+}

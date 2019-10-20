@@ -1,0 +1,41 @@
+<div class="example-container mat-elevation-z8">
+    <div>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+      >
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>名称</th>
+          <td mat-cell *matCellDef="let row">{{ row.name}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="model">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>数据模型</th>
+          <td mat-cell *matCellDef="let row">
+            <app-json-editor [data]="row.model" class="box p-tb-10"></app-json-editor>
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>操作
+              <button mat-icon-button color="primary" (click)="onAdd()">
+                <mat-icon>add</mat-icon>
+              </button></th>
+            <td mat-cell *matCellDef="let row; let i=index;">
+              <button mat-icon-button color="accent" (click)="onEdit(i, row)">
+                  <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+        
+                <button mat-icon-button color="accent" (click)="onDelete(i, row)">
+                  <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+            </td>
+          </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>

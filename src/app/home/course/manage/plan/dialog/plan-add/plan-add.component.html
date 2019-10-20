@@ -1,0 +1,64 @@
+<div class="container">
+  <h3 mat-dialog-title>添加课程计划</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <mat-label>请选择上级结点</mat-label>
+        <mat-select [(ngModel)]="data.parentid" name="id">
+          <mat-option *ngFor="let item of teachPlanList" [value]="item.id">
+            {{item.pname}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+    <!--Contains mat-hint for characters count and has maxLengt set-->
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="请输入章节/课时名称" [(ngModel)]="data.pname" name="pname" required >
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="请输入学习时长" [(ngModel)]="data.timelength" name="timelength">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput placeholder="请输入排序字段" [(ngModel)]="data.orderby" name="orderby">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+        <mat-form-field color="accent">
+          <textarea matInput placeholder="请输入章节/课时介绍" [(ngModel)]="data.description" name="description"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-label class="p-r-20">课程类型</mat-label>
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="data.ptype" name="ptype">
+          <mat-radio-button value="1"  class="p-r-10">视频</mat-radio-button>
+          <mat-radio-button value="2">文档</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="form">
+        <mat-label class="p-r-20">课程状态</mat-label>
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="data.status" name="status">
+          <mat-radio-button value="1"  class="p-r-10">未发布</mat-radio-button>
+          <mat-radio-button value="2">已发布</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" (click)="onSave()">保存</button>
+      <button mat-raised-button color="accent" tabindex="-1" [mat-dialog-close]="1">取消</button>
+    </div>
+  </form>
+</div>

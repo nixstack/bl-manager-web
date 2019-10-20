@@ -1,0 +1,21 @@
+<div class="app-upload-container">
+  <div
+    class="app-upload-preview"
+    *ngIf="file.src"
+  >
+    <div class="graphic app-upload-select">
+      <img *ngIf="showImage" [src]="file.src" [style.height]="height" [style.width]="width">
+      <mat-icon *ngIf="!showImage" class="icon-graphic">{{ graphic }}</mat-icon>
+    </div>
+  </div>
+  <div class="file-info">
+    <span class="file-name">{{ file.name }}</span>
+  </div>
+  <div class="overlay">
+    <div class="overlay-content">
+        <button mat-icon-button (click)="onRemove()">
+            <mat-icon>delete</mat-icon>
+          </button>
+    </div>
+  </div>
+</div>

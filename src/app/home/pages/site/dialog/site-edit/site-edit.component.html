@@ -1,0 +1,43 @@
+<div class="container">
+    <h3 mat-dialog-title>修改站点</h3>
+  
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #inputstate class="form-control" placeholder="请输入名称" [(ngModel)]="data.siteName" name="siteName" required >
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="请输入域名" [(ngModel)]="data.siteDomain" name="siteDomain">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+          <mat-form-field color="accent">
+            <input matInput placeholder="请输入端口" [(ngModel)]="data.sitePort" name="sitePort">
+          </mat-form-field>
+        </div>
+  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="请输入访问路径" [(ngModel)]="data.siteWebPath" name="siteWebPath">
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="请输入物理路径" [(ngModel)]="data.sitePhysicalPath" name="sitePhysicalPath">
+        </mat-form-field>
+      </div>
+
+  
+      <div mat-dialog-actions>
+        <button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="onConfirm()">保存</button>
+        <button mat-raised-button color="accent" [mat-dialog-close]="1" tabindex="-1">取消</button>
+      </div>
+    </form>
+  </div>
+  

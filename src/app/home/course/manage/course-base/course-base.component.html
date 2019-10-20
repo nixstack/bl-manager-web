@@ -1,0 +1,118 @@
+<mat-card>
+  <form class="mat-dialog-content">
+    <!--Contains mat-hint for characters count and has maxLengt set-->
+    <div class="form">
+      <mat-form-field color="accent">
+        <mat-label>课程名称</mat-label>
+        <input
+          matInput
+          #inputstate
+          class="form-control"
+          [(ngModel)]="data.name"
+          name="name"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <!-- <div class="form">
+      <mat-form-field color="accent">
+        <mat-label>课程分类</mat-label>
+        <mat-select [(ngModel)]="data.parentid" name="id">
+          <mat-option *ngFor="let item of teachPlanList" [value]="item.id">
+            {{ item.pname }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+
+
+    <div class="form">
+      <div>课程分类：</div>
+      <mat-card class="category-card">
+          <mat-tree [dataSource]="categoryDataSource" [treeControl]="treeControl" class="example-tree">
+              <!-- This is the tree node template for leaf nodes -->
+              <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+                <li class="mat-tree-node">
+                  <!-- use a disabled button to provide padding for tree leaf -->
+                  <!-- <button mat-icon-button disabled></button> -->
+                  <mat-radio-button (change)="itemSelectionToggle(node)">
+                      {{node.item}}
+                    </mat-radio-button>
+                  {{node.name}}
+                </li>
+              </mat-tree-node>
+              <!-- This is the tree node template for expandable nodes -->
+              <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                <li>
+                  <div class="mat-tree-node">
+                    <button mat-icon-button matTreeNodeToggle
+                            [attr.aria-label]="'toggle ' + node.name">
+                      <mat-icon class="mat-icon-rtl-mirror">
+                        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                      </mat-icon>
+                    </button>
+                    <mat-radio-button (change)="itemSelectionToggle(node)">
+                      {{node.item}}
+                    </mat-radio-button>
+                      <!-- <button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button> -->
+                    {{node.name}}
+                  </div>
+                  <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+                    <ng-container matTreeNodeOutlet></ng-container>
+                  </ul>
+                </li>
+              </mat-nested-tree-node>
+            </mat-tree>
+      </mat-card>
+    </div>
+
+
+    <div class="form">
+      <mat-label class="p-r-20">课程等级：</mat-label>
+      <mat-radio-group
+        aria-label="Select an option"
+        [(ngModel)]="data.grade"
+        name="grade"
+      >
+        <mat-radio-button value="1" class="p-r-10">高</mat-radio-button>
+        <mat-radio-button value="2">低</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="form m-t-16">
+        <mat-label class="p-r-20">学习模式：</mat-label>
+        <mat-radio-group
+          aria-label="Select an option"
+          [(ngModel)]="data.studymodel"
+          name="studymodel"
+        >
+          <mat-radio-button value="1" class="p-r-10">高</mat-radio-button>
+          <mat-radio-button value="2">低</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    <div class="form m-t-16">
+      <mat-form-field color="accent">
+        <mat-label>课程介绍</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          [(ngModel)]="data.description"
+          name="description"
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        [type]="submit"
+        (click)="onSave()"
+      >
+        保存
+      </button>
+    </div>
+  </form>
+</mat-card>

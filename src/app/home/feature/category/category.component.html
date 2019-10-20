@@ -1,0 +1,63 @@
+<mat-card class="category-card">
+  <!-- <section>
+     <div>
+      <button mat-raised-button color="primary" (click)="isShowInput = !isShowInput">
+        <mat-icon>add</mat-icon>新增根类
+      </button>
+      <span  class="p-l-10">
+          <button mat-raised-button color="primary" *ngIf="isShowInput" (click)="isShowInput = !isShowInput">
+              <mat-icon>expand_less</mat-icon>收起
+            </button>
+      </span>
+      <span  class="p-l-10">
+          <button mat-raised-button color="primary" *ngIf="isShowInput" (click)="onSave()">
+              <mat-icon>save</mat-icon>保存
+            </button>
+      </span>
+    </div>
+    <div class="p-tb-10" *ngIf="isShowInput">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="名称" name="name" value="" [(ngModel)]="viewModel.name" />
+      </mat-form-field>
+      <br/>
+      <mat-form-field class="example-full-width" >
+          <input matInput placeholder="描述" name="label" [(ngModel)]="viewModel.label" value="" />
+        </mat-form-field>
+    </div>
+  </section> -->
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <!-- 未结点 -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+        <!-- <mat-checkbox >{{node.item}}</mat-checkbox> -->
+        {{node.item}}
+        <button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button>
+      </mat-tree-node>
+    
+      <!-- <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding> -->
+      <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+        <mat-form-field color="accent">
+          <input matInput #itemName placeholder="名称">
+        </mat-form-field>
+        <mat-form-field class="p-lr-10" color="accent">
+            <input matInput #itemLabel placeholder="描述">
+          </mat-form-field>
+        <button mat-raised-button color="accent" (click)="saveNode(node, itemName.value, itemLabel.value)">
+            <mat-icon>save</mat-icon>保存
+        </button>
+      </mat-tree-node>
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+        <button mat-icon-button matTreeNodeToggle
+                [attr.aria-label]="'toggle ' + node.filename">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        <!-- {{node|json}} -->
+        <!-- <mat-checkbox>{{node.item}}</mat-checkbox> -->
+        {{node.item}}
+        <button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button>
+      </mat-tree-node>
+    </mat-tree>
+</mat-card>

@@ -1,0 +1,24 @@
+<div class="mat-elevation-z8">
+  <mat-tab-group>
+    <mat-tab label="基本信息"  [disabled]="isDisable(Stepper.BAS)">
+      <div class="p10">
+        <app-course-base></app-course-base>
+      </div>
+    </mat-tab>
+    <mat-tab label="课程图片" [disabled]="isDisable(Stepper.PIC)">
+      <div class="p10">
+        <app-course-pic></app-course-pic>
+      </div>
+    </mat-tab>
+    <mat-tab label="课程计划" [disabled]="isDisable(Stepper.PLN)">
+      <div class="p10">
+        <app-plan></app-plan>
+      </div>
+    </mat-tab>
+    <mat-tab label="发布课程" [disabled]="isDisable(Stepper.PUB)">
+      <div class="p10">
+        <app-course-publish></app-course-publish>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

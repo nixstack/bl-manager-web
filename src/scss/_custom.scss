@@ -1,0 +1,147 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// 必须设置height:100%，否则侧边栏没有高度，导致不显示内容
+mat-sidenav-container {
+  height: 100%;
+}
+
+// 去掉底部滚动条
+mat-sidenav.mat-drawer-side {
+  border-right: initial;
+}
+
+.snack-bar-message {
+  -webkit-background-size: 40px 40px;
+  -moz-background-size: 40px 40px;
+  background-size: 40px 40px;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0.25, rgba(255, 255, 255, 0.05)),
+    color-stop(0.25, transparent),
+    color-stop(0.5, transparent),
+    color-stop(0.5, rgba(255, 255, 255, 0.05)),
+    color-stop(0.75, rgba(255, 255, 255, 0.05)),
+    color-stop(0.75, transparent),
+    to(transparent)
+  );
+  background-image: -webkit-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 75%,
+    transparent
+  );
+  // background-image: -moz-linear-gradient(
+  //   135deg,
+  //   rgba(255, 255, 255, 0.05) 25%,
+  //   transparent 25%,
+  //   transparent 50%,
+  //   rgba(255, 255, 255, 0.05) 50%,
+  //   rgba(255, 255, 255, 0.05) 75%,
+  //   transparent 75%,
+  //   transparent
+  // );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 75%,
+    transparent
+  );
+  -moz-box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  -webkit-animation: animate-bg 5s linear infinite;
+  -moz-animation: animate-bg 5s linear infinite;
+}
+.snack-bar-info {
+  background-color: #4ea5cd;
+  border-color: #3b8eb5;
+}
+
+.snack-bar-error {
+  background-color: #de4343;
+  border-color: #c43d3d;
+}
+
+.snack-bar-warning {
+  background-color: #eaaf51;
+  border-color: #d99a36;
+}
+
+.snack-bar-success {
+  background-color: #61b832;
+  border-color: #55a12c;
+}
+
+@-webkit-keyframes animate-bg {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -80px 0;
+  }
+}
+
+@-moz-keyframes animate-bg {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -80px 0;
+  }
+}
+
+// 滚动条
+.mat-sidenav-content::-webkit-scrollbar,
+body::-webkit-scrollbar,
+mat-sidenav.sidenav::-webkit-scrollbar,
+.main-container::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.mat-sidenav-content::-webkit-scrollbar-trac,
+body::-webkit-scrollbar-track,
+mat-sidenav.sidenav::-webkit-scrollbar-trac,
+.main-container::-webkit-scrollbar-trac {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.mat-sidenav-content::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+mat-sidenav.sidenav::-webkit-scrollbar-thumb,
+.main-container::-webkit-scrollbar-thumb {
+  background-color: #6e6e6e;
+  outline: 1px solid #333;
+}

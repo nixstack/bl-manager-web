@@ -1,0 +1,85 @@
+<div class="container">
+    <h3 mat-dialog-title>修改页面</h3>
+  
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+  
+      <div class="form">
+        <mat-form-field color="accent">
+          <mat-label>请选择站点</mat-label>
+          <mat-select [(ngModel)]="data.siteId" name="siteId">
+            <mat-option *ngFor="let item of siteList" [value]="item.siteId">
+              {{item.siteName}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <!--Textarea for demo purposes-->
+      <!-- <div class="form">
+          <mat-form-field color="accent">
+              <mat-label>请选择模版</mat-label>
+              <mat-select [(ngModel)]="data.templateId" name="templateId">
+                <mat-option *ngFor="let item of templateList" [value]="item.templateId">
+                  {{item.templateName}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+      </div> -->
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <mat-label>请选择数据模型</mat-label>
+          <mat-select [(ngModel)]="data.dataUrl" name="dataUrl">
+            <mat-option *ngFor="let item of dataUrlList" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <!--Contains mat-hint for characters count and has maxLengt set-->
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #inputstate class="form-control" placeholder="请输入页面名称" [(ngModel)]="data.pageName" name="pageName" required >
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+          <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="请输入页面别名" [(ngModel)]="data.pageAliase" name="pageAliase">
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="请输入页面访问路径" [(ngModel)]="data.pageWebPath" name="pageWebPath">
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="请输入物理路径" [(ngModel)]="data.pagePhysicalPath" name="pagePhysicalPath">
+        </mat-form-field>
+      </div>
+
+
+      <div class="form">
+        <mat-label>页面类型</mat-label>
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="data.pageType" name="pageType">
+          <mat-radio-button value="1">静态</mat-radio-button>
+          <mat-radio-button value="2">动态</mat-radio-button>
+        </mat-radio-group>
+      </div>
+  
+      <div mat-dialog-actions>
+        <button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="onSave()">保存</button>
+        <button mat-raised-button color="accent" (click)="onNoClick()" tabindex="-1">取消</button>
+      </div>
+    </form>
+  </div>
+  

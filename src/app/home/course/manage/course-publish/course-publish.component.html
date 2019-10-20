@@ -1,0 +1,37 @@
+<div class="p-l-10 p-t-10 p-b-10">
+    <button mat-raised-button color="primary" (click)="onGetPreviewUrl()">
+        <mat-icon>visibility</mat-icon> 预览课程
+      </button>
+      <a *ngIf="previewUrl" [href]="previewUrl" target="_blank">点击预览课程</a>
+</div>
+<mat-divider></mat-divider>
+<div class="p-l-10 p-t-10 p-b-10">
+    <div *ngIf="data.status === 202001">
+        <mat-label>状态：制作中</mat-label><br />
+        <button mat-raised-button color="primary" (click)="onPublish()">
+          <mat-icon>send</mat-icon> 发布新课程
+        </button>
+      </div>
+      <div *ngIf="data.status === 202003">
+        <mat-label>状态：已下线</mat-label><br />
+        <span
+          ><a [href]="'http://nixstack.com/course/detail/' + courseId + '.html'" target="_blank"
+            >点击查看详情页面</a
+          ></span
+        >
+      </div>
+      <div *ngIf="data.status === '202002'">
+        <mat-label>状态：已发布</mat-label><br />
+        <div>
+            <button mat-raised-button color="primary" (click)="onPublish()">
+                <mat-icon>send</mat-icon> 修改课程发布
+              </button>
+              <span
+                ><a [href]="'http://nixstack.com/course/detail/' + courseId + '.html'" target="_blank"
+                  >点击查看详情页面</a
+                ></span
+              >
+        </div>
+  
+      </div>
+</div>
